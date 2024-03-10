@@ -10,6 +10,7 @@ const imgArr = [
   { name: "AWS" },
   { name: "NextJS" },
   { name: "NodeJS" },
+  { name: "Java" },
   { name: "Tailwind" },
   { name: "Firebase" },
   { name: "Github" },
@@ -18,7 +19,7 @@ const imgArr = [
 
 function Skills() {
   return (
-    <div className="w-full lg:h-screen p-2">
+    <div id="skills" className="w-full lg:h-screen p-2">
       <div className="max-w-[1240px] mx-auto flex flex-col justify-center h-full">
         <p className="text-xl tracking-widest uppercase text-[#e36414]">
           Skills
@@ -33,8 +34,8 @@ function Skills() {
                     <Image
                       src={`/assets/skills/${item.name}.png`}
                       alt={item.name}
-                      width="64"
-                      height="64"
+                      width="70"
+                      height="70"
                     />
                   </div>
                   <div className="flex flex-col items-center justify-center">
