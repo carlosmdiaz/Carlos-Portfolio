@@ -2,6 +2,7 @@ import React from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import Link from "next/link";
 
 function Main() {
   return (
@@ -23,16 +24,32 @@ function Main() {
           </p>
           <div className="flex items-center justify-between max-w-[330px] m-auto py-4">
             <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
-              <FaLinkedinIn />
+              <Link
+                href="https://www.linkedin.com/in/diaz-carlos-h/"
+                target="_blank"
+              >
+                <FaLinkedinIn />
+              </Link>
             </div>
             <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
-              <FaGithub />
+              <Link href="https://github.com/carlosmdiaz" target="_blank">
+                <FaGithub />
+              </Link>
             </div>
             <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
-              <AiOutlineMail />
+              <Link href="mailto:carlosdiaz3979@gmail.com" target="_blank">
+                <AiOutlineMail />
+              </Link>
             </div>
             <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
-              <BsFillPersonLinesFill />
+              <Link
+                href="/assets/Carlos-Diaz-Resume.pdf"
+                alt="Download Resume PDF"
+                target="_blank"
+                download
+              >
+                <BsFillPersonLinesFill />
+              </Link>
             </div>
           </div>
         </div>

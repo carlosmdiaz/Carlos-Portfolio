@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/layout/Navbar";
 import Main from "@/components/Main";
 import Head from "next/head";
 import About from "@/components/About";
@@ -9,7 +9,6 @@ import { getAllProjects } from "@/helpers/projects-helpers";
 
 export default function Home(props) {
   const { projects } = props;
-  console.log(projects);
   return (
     <main>
       <Head>

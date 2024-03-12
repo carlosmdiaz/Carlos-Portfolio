@@ -10,9 +10,7 @@ const imgArr = [
   { id: "p4", img: netflixImg },
 ];
 export async function getAllProjects() {
-  const response = await fetch(
-    "https://portfolio-page-3f590-default-rtdb.firebaseio.com/Projects.json"
-  );
+  const response = await fetch(process.env.FIREBASE_URL);
   const data = await response.json();
   const projects = [];
 

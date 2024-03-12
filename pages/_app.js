@@ -1,11 +1,22 @@
-import Navbar from "@/components/Navbar";
+import Layout from "@/components/layout/layout";
+import { NotificationContextProvider } from "@/store/notification-context";
 import "@/styles/globals.css";
+import Head from "next/head";
 
 export default function App({ Component, pageProps }) {
   return (
-    <>
-      <Navbar />
-      <Component {...pageProps} />
-    </>
+    <NotificationContextProvider>
+      <Layout>
+        <Head>
+          <title>Carlos Portfolio Page</title>
+          <meta name="description" content="Carlos Portfolio Page" />
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
+        </Head>
+        <Component {...pageProps} />
+      </Layout>
+    </NotificationContextProvider>
   );
 }

@@ -1,11 +1,102 @@
 import Link from "next/link";
-import React from "react";
+import React, { useRef, useState, useContext } from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { HiOutlineChevronDoubleUp } from "react-icons/hi";
+import NotificationContext from "@/store/notification-context";
 
 function Contact() {
+  const [isInvalid, setIsInvalid] = useState(false);
+  const notificationCtx = useContext(NotificationContext);
+
+  const formRef = useRef();
+  const nameRef = useRef();
+  const phoneRef = useRef();
+  const emailRef = useRef();
+  const subjectRef = useRef();
+  const messageRef = useRef();
+
+  function sendEmailHandler(event) {
+    event.preventDefault();
+    // fetch user input (state or refs)
+    // optional: validate input
+    // send valid data to API
+
+    const enteredName = nameRef.current.value;
+    const enteredPhone = phoneRef.current.value;
+    const enteredEmail = emailRef.current.value;
+    const enteredSubject = subjectRef.current.value;
+    const enteredMessage = messageRef.current.value;
+
+    notificationCtx.showNotification({
+      title: "Sending the Message...",
+      message: "Sending the message to Carlos.",
+      status: "pending",
+    });
+
+    if (
+      !enteredEmail ||
+      enteredEmail.trim() === "" ||
+      !enteredEmail.includes("@") ||
+      !enteredName ||
+      enteredName.trim() === "" ||
+      !enteredPhone ||
+      enteredPhone.trim() === "" ||
+      !enteredSubject ||
+      enteredSubject.trim() === "" ||
+      !enteredMessage ||
+      enteredMessage.trim() === ""
+    ) {
+      setIsInvalid(true);
+      return;
+    }
+    const messageBody = {
+      name: enteredName,
+      phone: enteredPhone,
+      email: enteredEmail,
+      subject: enteredSubject,
+      message: enteredMessage,
+    };
+    fetch("/api/email", {
+      method: "POST",
+      body: JSON.stringify(messageBody),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((response) => {
+        console.log("We are here RESPONSE");
+        if (response.ok) {
+          console.log(response);
+          return response.json();
+        }
+
+        return response.json().then((data) => {
+          console.log("We are here RESPONSE ERROR");
+          throw new Error(data.message || "Something went wrong!");
+        });
+      })
+      .then((data) => {
+        console.log("We are here DATA");
+        notificationCtx.showNotification({
+          title: "Success!",
+          message: "Successfully sent the message to Carlos!",
+          status: "success",
+        });
+      })
+      .catch((error) => {
+        console.log("We are here CATCH ERROR");
+        notificationCtx.showNotification({
+          title: "Error!",
+          message: error.message || "Something went wrong!",
+          status: "error",
+        });
+      });
+
+    formRef.current.reset();
+  }
+
   return (
     <div id="contact" className="w-full lg:h-screen">
       <div className="max-w-[1240px] m-auto px-2 py-16 w-full">
@@ -25,7 +116,7 @@ function Contact() {
                 />
               </div>
               <div>
-                <h2>Name here</h2>
+                <h2>Carlos Diaz</h2>
                 <p>Full Stack Developer</p>
                 <p className="py-4">
                   I am available for freelance or full-time positions. Contact
@@ -36,16 +127,35 @@ function Contact() {
                 <p className="uppercase pt-8">Connect With Me</p>
                 <div className="flex items-center justify-between py-4">
                   <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
-                    <FaLinkedinIn />
+                    <Link
+                      href="https://www.linkedin.com/in/diaz-carlos-h/"
+                      target="_blank"
+                    >
+                      <FaLinkedinIn />
+                    </Link>
                   </div>
                   <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
-                    <FaGithub />
+                    <Link href="https://github.com/carlosmdiaz" target="_blank">
+                      <FaGithub />
+                    </Link>
                   </div>
                   <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
-                    <AiOutlineMail />
+                    <Link
+                      href="mailto:carlosdiaz3979@gmail.com"
+                      target="_blank"
+                    >
+                      <AiOutlineMail />
+                    </Link>
                   </div>
                   <div className="rounded-full shadow-lg shadow-gray-400 p-6 cursor-pointer hover:scale-110 ease-in duration-300">
-                    <BsFillPersonLinesFill />
+                    <Link
+                      href="/assets/Carlos-Diaz-Resume.pdf"
+                      alt="Download Resume PDF"
+                      target="_blank"
+                      download
+                    >
+                      <BsFillPersonLinesFill />
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -54,13 +164,14 @@ function Contact() {
           {/** right */}
           <div className="col-span-3 w-full h-auto shadow-xl shadow-gray-400 rounded-xl lg:p-4">
             <div className="p-4">
-              <form>
+              <form ref={formRef} onSubmit={sendEmailHandler}>
                 <div className="grid md:grid-cols-2 gap-4 w-full py-2">
                   <div className="flex flex-col">
                     <label className="uppercase text-sm py-2">Name</label>
                     <input
                       className="border-2 rounded-lg p-3 flex border-gray-300"
                       type="text"
+                      ref={nameRef}
                     />
                   </div>
                   <div className="flex flex-col">
@@ -70,6 +181,7 @@ function Contact() {
                     <input
                       className="border-2 rounded-lg p-3 flex border-gray-300"
                       type="text"
+                      ref={phoneRef}
                     />
                   </div>
                 </div>
@@ -78,6 +190,7 @@ function Contact() {
                   <input
                     className="border-2 rounded-lg p-3 flex border-gray-300"
                     type="email"
+                    ref={emailRef}
                   />
                 </div>
                 <div className="flex flex-col py-2">
@@ -85,6 +198,7 @@ function Contact() {
                   <input
                     className="border-2 rounded-lg p-3 flex border-gray-300"
                     type="text"
+                    ref={subjectRef}
                   />
                 </div>
                 <div className="flex flex-col py-2">
@@ -92,11 +206,16 @@ function Contact() {
                   <textarea
                     className="border-2 rounded-lg p-3 border-gray-300"
                     rows="10"
+                    ref={messageRef}
                   ></textarea>
                 </div>
-                <button className="w-full p-4 text-gray-100 mt-4">
+                <button
+                  className="w-full p-4 text-gray-100 mt-4"
+                  onClick={sendEmailHandler}
+                >
                   Send Message
                 </button>
+                {isInvalid && <p>Please enter a valid email address!</p>}
               </form>
             </div>
           </div>
