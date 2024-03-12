@@ -5,8 +5,11 @@ import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
+import { getAllProjects } from "@/helpers/projects-helpers";
 
-export default function Home() {
+export default function Home(props) {
+  const { projects } = props;
+  console.log(projects);
   return (
     <main>
       <Head>
@@ -15,13 +18,23 @@ export default function Home() {
         <link rel="icon" href="/navLogo.png" />
       </Head>
       <div className="">
-        <Navbar />
         <Main />
         <About />
         <Skills />
-        <Projects />
+        <Projects projects={projects} />
         <Contact />
       </div>
     </main>
   );
+}
+
+export async function getStaticProps() {
+  const projects = await getAllProjects();
+
+  return {
+    props: {
+      projects: projects,
+    },
+    revalidate: 2000,
+  };
 }

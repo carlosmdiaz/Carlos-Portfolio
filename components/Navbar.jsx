@@ -78,12 +78,14 @@ function Navbar() {
         >
           <div>
             <div className="flex w-full items-center justify-between">
-              <Image
-                src="/assets/navLogoC2.png"
-                alt="/"
-                width="87"
-                height="35"
-              />
+              <Link href="/" onClick={handleNav}>
+                <Image
+                  src="/assets/navLogoC2.png"
+                  alt="/"
+                  width="87"
+                  height="35"
+                />
+              </Link>
               <div
                 className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer"
                 onClick={handleNav}
