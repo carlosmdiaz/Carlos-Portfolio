@@ -34,8 +34,12 @@ function ProjectItem(props) {
           <p>Project</p>
           <h2>Overview</h2>
           <p>{project.description}</p>
-          <button className="px-8 py-2 mt-4 mr-8">Demo</button>
-          <button className="px-8 py-2 mt-4">Code</button>
+          <Link href={project.projectUrl} target="_blank">
+            <button className="px-8 py-2 mt-4 mr-8">Demo</button>
+          </Link>
+          <Link href={project.githubURL} target="_blank">
+            <button className="px-8 py-2 mt-4">Code</button>
+          </Link>
         </div>
         <div className="col-span-4 md:col-span-1 shadow-xl shadow-gray-400 rounded-xl p-4">
           <div className="p-2">

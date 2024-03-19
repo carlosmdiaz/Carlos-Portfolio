@@ -9,6 +9,7 @@ export default function App({ Component, pageProps }) {
       <Layout>
         <Head>
           <title>Carlos Portfolio Page</title>
+          <link rel="icon" href="/assets/cdlogo.png" />
           <meta name="description" content="Carlos Portfolio Page" />
           <meta
             name="viewport"

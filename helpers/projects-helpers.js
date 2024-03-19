@@ -1,13 +1,13 @@
-import propertyImg from "../public/assets/projects/property.jpg";
 import cryptoImg from "../public/assets/projects/crypto.jpg";
-import netflixImg from "../public/assets/projects/netflix.jpg";
-import twitchImg from "../public/assets/projects/twitch.jpg";
+import unityImg from "../public/assets/projects/unity.jpg";
+import weatherImg from "../public/assets/projects/weather.jpg";
+import todoImg from "../public/assets/projects/todo.jpg";
 
 const imgArr = [
-  { id: "p1", img: propertyImg },
-  { id: "p2", img: cryptoImg },
-  { id: "p3", img: twitchImg },
-  { id: "p4", img: netflixImg },
+  { id: "p1", img: cryptoImg },
+  { id: "p2", img: unityImg },
+  { id: "p3", img: todoImg },
+  { id: "p4", img: weatherImg },
 ];
 export async function getAllProjects() {
   const response = await fetch(process.env.FIREBASE_URL);
