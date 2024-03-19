@@ -1,23 +1,22 @@
 import Image from "next/image";
 import React from "react";
 
-const imgArr = [
-  { name: "HTML" },
-  { name: "CSS" },
-  { name: "JavaScript" },
-  { name: "React" },
-  { name: "MongoDB" },
-  { name: "AWS" },
-  { name: "NextJS" },
-  { name: "NodeJS" },
-  { name: "Java" },
-  { name: "Tailwind" },
-  { name: "Firebase" },
-  { name: "Github" },
-  { name: "Shopify" },
-];
-
 function Skills() {
+  const imgArr = [
+    { name: "HTML" },
+    { name: "CSS" },
+    { name: "JavaScript" },
+    { name: "React" },
+    { name: "MongoDB" },
+    { name: "AWS" },
+    { name: "NextJS" },
+    { name: "NodeJS" },
+    { name: "Java" },
+    { name: "Tailwind" },
+    { name: "Firebase" },
+    { name: "Github" },
+    { name: "Shopify" },
+  ];
   return (
     <div id="skills" className="w-full lg:h-screen p-2">
       <div className="max-w-[1240px] mx-auto flex flex-col justify-center h-full">
