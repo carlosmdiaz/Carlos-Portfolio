@@ -104,7 +104,7 @@ function Skills() {
             <div className="grid grid-cols-2 gap-4 justify-center items-center">
               <div className="m-auto">
                 <Image
-                  src={`/assets/skills/$aws.png`}
+                  src={`/assets/skills/aws.png`}
                   alt="AWS"
                   width="70"
                   height="70"
