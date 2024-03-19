@@ -10,7 +10,9 @@ function Projects(props) {
         <p className="text-xl tracking-widest uppercase text-[#e36414]">
           Projects
         </p>
-        <h2 className="py-4">What I've Built</h2>
+        <h2 className="py-4">
+          What I<span>&#39;</span>ve Built
+        </h2>
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((item) => {
             return (

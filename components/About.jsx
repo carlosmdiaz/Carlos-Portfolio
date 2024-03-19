@@ -11,11 +11,11 @@ function About() {
           <h2 className="py-4">Who I Am</h2>
           <p className="py-2 text-gray-600"></p>
           <p className="py-2 text-gray-600">
-            Over the past five years, I have immersed myself in the dynamic
-            landscape of the tech industry, dedicating three years as an IT
-            Specialist and two years as a versatile Full Stack/DevOps Engineer.
-            My affinity for technology has been innate, and my passion lies in
-            seamlessly interacting with computers.
+            Over the past five years, I<apns>&#39;</apns>ve immersed myself in
+            the dynamic landscape of the tech industry, dedicating three years
+            as an IT Specialist and two years as a versatile Full Stack/DevOps
+            Engineer. My affinity for technology has been innate, and my passion
+            lies in seamlessly interacting with computers.
           </p>
           <p className="py-2 text-gray-600">
             My journey began in 2016 when, as a senior in high school, I delved
