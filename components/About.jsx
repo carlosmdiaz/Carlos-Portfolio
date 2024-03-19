@@ -9,9 +9,7 @@ function About() {
             About
           </p>
           <h2 className="py-4">Who I Am</h2>
-          <p className="py-2 text-gray-600">
-            // I am not your typical developer
-          </p>
+          <p className="py-2 text-gray-600"></p>
           <p className="py-2 text-gray-600">
             Over the past five years, I've immersed myself in the dynamic
             landscape of the tech industry, dedicating three years as an IT

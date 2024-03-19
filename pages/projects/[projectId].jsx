@@ -47,7 +47,10 @@ function ProjectItem(props) {
             <div className="grid grid-cols-3 md:grid-cols-1">
               {tech.map((item) => {
                 return (
-                  <p className="text-gray-600 py-2 flex items-center">
+                  <p
+                    key={item.title}
+                    className="text-gray-600 py-2 flex items-center"
+                  >
                     <RiRadioButtonFill className="pr-1" />
                     {item}
                   </p>
